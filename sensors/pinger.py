@@ -28,7 +28,7 @@ class Pinger(PollingSensor):
     def setup(self):               
         self._timeout=int(self._config['timeout'])
         self._count=int(self._config['count'])  
-        self._threads=int(self._config['threads']) # num_threads: 100
+        self._threads=int(self._config['threads']) # threads: 100
        
 
     def poll(self):        
