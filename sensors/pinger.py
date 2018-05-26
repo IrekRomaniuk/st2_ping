@@ -22,14 +22,15 @@ class Pinger(PollingSensor):
                                           config=config,                                 
                                           poll_interval=poll_interval)
         self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
-        self.ips_q = Queue.Queue()
-        self.out_q = Queue.Queue()
+        
        
         
     def setup(self):               
         self._timeout=int(self._config['timeout'])
         self._count=int(self._config['count'])  
         self._threads=int(self._config['threads']) # threads: 100
+        self.ips_q = Queue.Queue()
+        self.out_q = Queue.Queue()
        
 
     def poll(self):        
