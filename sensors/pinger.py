@@ -38,6 +38,7 @@ class Pinger(PollingSensor):
         num_threads = self._threads
         
         payload={}
+        payload['msg']=[]
         ips = []
         """
         for i in range(1,255):
@@ -67,7 +68,7 @@ class Pinger(PollingSensor):
             except Queue.Empty:
                 break
             self._logger.debug('##########  Result: {}'.format(msg))
-            payload['msg']=msg
+            payload['msg'].append(msg)
             self.sensor_service.dispatch(trigger="ping.pinger", payload=payload) 
 
     def thread_pinger(self, i, q):
