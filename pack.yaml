@@ -1,0 +1,9 @@
+---
+ref: ping
+name: ping pack
+description: Ping multiple destinations and act on responses 
+keywords:
+    - ping
+version: 0.1.0
+author: Irek Romaniuk
+email: irek.romaniuk@gmail.com

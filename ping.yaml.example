@@ -1,0 +1,10 @@
+---
+  num_threads: 100
+  loc_targets: "./pinglist.txt"
+  ping_timeout: 1
+  ping_count: 1
+  base_url: "10.34.1.100:8086"
+  username: "firewall"    
+  password: "password"  
+  db: "firewalls"
+    
