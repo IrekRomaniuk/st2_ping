@@ -80,11 +80,10 @@ class Pinger(PollingSensor):
             p_ping_out = p_ping.communicate()[0]
 
             if (p_ping.wait() == 0):
-            # rtt min/avg/max/mdev = 22.293/22.293/22.293/0.000 ms
-            search = re.search(r'rtt min/avg/max/mdev = (.*)/(.*)/(.*)/(.*) ms',
-                                p_ping_out, re.M|re.I)
-            ping_rtt = search.group(2)
-            out_q.put("OK " + str(ip) + " rtt= "+ ping_rtt)
+                # rtt min/avg/max/mdev = 22.293/22.293/22.293/0.000 ms
+                search = re.search(r'rtt min/avg/max/mdev = (.*)/(.*)/(.*)/(.*) ms', p_ping_out, re.M|re.I)
+                ping_rtt = search.group(2)
+                out_q.put("OK " + str(ip) + " rtt= "+ ping_rtt)
 
             # update queue : this ip is processed
             q.task_done()
