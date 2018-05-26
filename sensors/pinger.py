@@ -69,7 +69,9 @@ class Pinger(PollingSensor):
                 break
             self._logger.debug('##########  Result: {}'.format(msg))
             payload['msg'].append(msg)
-            self.sensor_service.dispatch(trigger="ping.pinger", payload=payload) 
+        
+        self._logger.debug('########## Pinger dispatching payload...')
+        self.sensor_service.dispatch(trigger="ping.pinger", payload=payload) 
 
     def thread_pinger(self, i, q):
         """Pings hosts in queue"""
