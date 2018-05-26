@@ -2,7 +2,7 @@
 class_name: "Pinger"
 entry_point: "pinger.py"
 description: "Ping targets"
-poll_interval: 60
+poll_interval: 300
 trigger_types:
   -
     name: "pinger"

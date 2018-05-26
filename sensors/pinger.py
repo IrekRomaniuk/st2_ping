@@ -40,8 +40,9 @@ class Pinger(PollingSensor):
         payload={}
         ips = []
         for i in range(1,255):
-            ips.append("10.192."+str(i)+".1")
-        
+            for j in range(192,207):
+                ips.append("10." + str(j) + "." + str(i) + ".1")
+        self._logger.debug('First: {} Last: {} Number: {}'.format(ips[0],ips[len(ips)-1], len(ips)))
         # start the thread pool
         for i in range(num_threads):
             worker = Thread(target=thread_pinger, args=(i, ips_q))
