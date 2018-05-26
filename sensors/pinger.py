@@ -45,7 +45,7 @@ class Pinger(PollingSensor):
         self._logger.debug('First: {} Last: {} Number: {}'.format(ips[0],ips[len(ips)-1], len(ips)))
         # start the thread pool
         for i in range(num_threads):
-            worker = Thread(target=thread_pinger, args=(i, ips_q))
+            worker = Thread(target=self.thread_pinger, args=(i, ips_q))
             worker.setDaemon(True)
             worker.start()
 
@@ -66,7 +66,7 @@ class Pinger(PollingSensor):
         payload['msg']=msg
         self.sensor_service.dispatch(trigger="ping.pinger", payload=payload) 
 
-    def thread_pinger(i, q):
+    def thread_pinger(self, i, q):
         """Pings hosts in queue"""
         while True:
             # get an IP item form queue
