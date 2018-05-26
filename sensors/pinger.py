@@ -71,7 +71,8 @@ class Pinger(PollingSensor):
             self._logger.debug('##########  Result: {}'.format(msg))
             payload['msg'].append(msg)
         
-        self._logger.debug('########## Pinger dispatching payload...')
+        # self._logger.debug('########## Pinger dispatching payload...')
+        payload['total']=len(payload['msg'])
         self.sensor_service.dispatch(trigger="ping.pinger", payload=payload) 
 
     def thread_pinger(self, i, q):
