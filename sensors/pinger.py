@@ -26,15 +26,15 @@ class Pinger(PollingSensor):
 
         
     def setup(self):               
-        self._num_threads=int(self._config['num_threads']) 
         self._ping_timeout=int(self._config['ping_timeout'])
         self._ping_count=int(self._config['ping_count'])  
+        self._threads=int(self._config['num_threads']) # num_threads: 100
        
 
     def poll(self):        
         self._logger.debug('Pinger dispatching trigger...')   
         # 
-        num_threads = self._num_threads
+        num_threads = self._threads
         ips_q = Queue.Queue()
         out_q = Queue.Queue()
         payload={}
