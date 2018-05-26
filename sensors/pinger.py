@@ -32,7 +32,7 @@ class Pinger(PollingSensor):
        
 
     def poll(self):        
-        self._logger.debug('Pinger dispatching trigger...')   
+        self._logger.debug('########## Pinger dispatching trigger...')   
         # 
         num_threads = self._threads
         ips_q = Queue.Queue()
@@ -42,7 +42,7 @@ class Pinger(PollingSensor):
         for i in range(1,255):
             for j in range(192,200): #192,207
                 ips.append("10." + str(j) + "." + str(i) + ".1")
-        self._logger.debug('First: {} Last: {} Number: {}'.format(ips[0],ips[len(ips)-1], len(ips)))
+        self._logger.debug('########## First: {} Last: {} Number: {}'.format(ips[0],ips[len(ips)-1], len(ips)))
         # start the thread pool
         for i in range(num_threads):
             worker = Thread(target=self.thread_pinger, args=(i, ips_q))
@@ -62,7 +62,7 @@ class Pinger(PollingSensor):
                 msg = out_q.get_nowait()
             except Queue.Empty:
                 break
-            self._logger.debug('Result: {}'.format(msg))
+            self._logger.debug('##########  Result: {}'.format(msg))
             payload['msg']=msg
             self.sensor_service.dispatch(trigger="ping.pinger", payload=payload) 
 
