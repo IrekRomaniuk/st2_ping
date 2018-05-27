@@ -1,0 +1,16 @@
+---
+    name: "rtt_2_influx"
+    pack: "ping"
+    description: "Write avg att to Influxdb"
+    enabled: true
+    trigger:
+        type: "ping.rtt_trigger"  
+    criteria:                              # optional
+        trigger.total: 
+          type: "equals" 
+          pattern: true        
+    action:
+        ref: "pan.influx_write"
+        parameters:
+            rtt: "{{trigger.msg}}"
+            total: "{{trigger.total}}"

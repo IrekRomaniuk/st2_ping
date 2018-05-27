@@ -1,0 +1,17 @@
+---
+name: "influx_write"
+runner_type: "python-script"
+description: "Write point to InfluxDB"
+enabled: true
+entry_point: "influx_write.py"
+parameters:    
+    rtt:
+        type: "string"
+        description: "ping rtt avg"
+        required: true
+        position: 0  
+    total:
+        type: "string"
+        description: "number of targets responding"
+        required: true
+        position: 1     
