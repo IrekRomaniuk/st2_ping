@@ -31,6 +31,7 @@ class influx_write(Action):
         ips = ast.literal_eval(ips)
         delay = pd.Series([float(ip.split(':')[1]) for ip in ips]) 
         rtt = delay.quantile(0.75)
+        print(rtt)
         result=client.write_points(
             [
                 {
