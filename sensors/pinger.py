@@ -21,10 +21,7 @@ class Pinger(PollingSensor):
         super(Pinger, self).__init__(sensor_service=sensor_service,  
                                           config=config,                                 
                                           poll_interval=poll_interval)
-        self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
-        self.ips = []
-        
-       
+        self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)        
         
     def setup(self):               
         self._timeout=int(self._config['timeout'])
@@ -33,6 +30,7 @@ class Pinger(PollingSensor):
         self._targets=self._config['targets']
         self.ips_q = Queue.Queue()
         self.out_q = Queue.Queue()
+        self.ips = []
         try:
             with open(self._targets, 'r') as f:
                 self.ips = f.readlines()
@@ -46,9 +44,10 @@ class Pinger(PollingSensor):
         num_threads = self._threads
         
         payload={}
-        payload['msg']=[]
         
-        if self.ips:               
+        
+        if self.ips:   
+            payload['msg']=[]            
             self._logger.debug('########## First: {} Last: {} Number: {}'.format(self.ips[0],self.ips[len(self.ips)-1], len(self.ips)))
         else:
             payload['Error'] = "Can not read file with targets"
