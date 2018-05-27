@@ -12,5 +12,5 @@
     action:
         ref: "pan.influx_write"
         parameters:
-            rtt: "{{trigger.msg}}"
+            ips: "{{trigger.msg}}"
             total: "{{trigger.total}}"
