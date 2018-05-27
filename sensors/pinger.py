@@ -22,6 +22,7 @@ class Pinger(PollingSensor):
                                           config=config,                                 
                                           poll_interval=poll_interval)
         self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
+        self.ips = []
         
        
         
@@ -29,8 +30,14 @@ class Pinger(PollingSensor):
         self._timeout=int(self._config['timeout'])
         self._count=int(self._config['count'])  
         self._threads=int(self._config['threads']) # threads: 100
+        self._targets=self._config['count']
         self.ips_q = Queue.Queue()
         self.out_q = Queue.Queue()
+        try:
+            with open(self._targets, 'r') as f:
+                self.ips = f.readlines()
+        except IOError: 
+            self._logger.debug('########## Can not read file with targets: {}'.format(self._targets))
        
 
     def poll(self):        
@@ -40,15 +47,13 @@ class Pinger(PollingSensor):
         
         payload={}
         payload['msg']=[]
-        ips = []
-        """
-        for i in range(1,255):
-            for j in range(192,194): #192,207
-                ips.append("10." + str(j) + "." + str(i) + ".1")
-        """        
-        for i in range(1,254):
-            ips.append("10.34.1." + str(i) )
-        self._logger.debug('########## First: {} Last: {} Number: {}'.format(ips[0],ips[len(ips)-1], len(ips)))
+        
+        if self.ips:               
+            self._logger.debug('########## First: {} Last: {} Number: {}'.format(self.ips[0],self.ips[len(self.ips)-1], len(self.ips)))
+        else:
+            payload['Error'] = "Can not read file with targets"
+            self.sensor_service.dispatch(trigger="ping.pinger", payload=payload)
+            return
         # start the thread pool
         for i in range(num_threads):
             worker = Thread(target=self.thread_pinger, args=(i, self.ips_q))
@@ -56,7 +61,7 @@ class Pinger(PollingSensor):
             worker.start()
 
         # fill queue
-        for ip in ips:
+        for ip in self.ips:
             self.ips_q.put(ip)
 
         # wait until worker threads are done to exit

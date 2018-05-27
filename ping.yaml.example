@@ -2,7 +2,6 @@
   threads: 100
   targets: "/opt/stackstorm/static/webui/pinglist.txt"
   output: "ping.txt"
-  subnet: "8.8.8.0/24"
   timeout: 1
   count: 1
   url: "1.1.1.1:8086"
