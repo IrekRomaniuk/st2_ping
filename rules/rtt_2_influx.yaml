@@ -10,7 +10,7 @@
           type: "greaterthan" 
           pattern: 0        
     action:
-        ref: "pan.influx_write"
+        ref: "ping.influx_write"
         parameters:
             ips: "{{trigger.msg}}"
             total: "{{trigger.total}}"
