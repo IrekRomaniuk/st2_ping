@@ -30,7 +30,7 @@ class Pinger(PollingSensor):
         self._timeout=int(self._config['timeout'])
         self._count=int(self._config['count'])  
         self._threads=int(self._config['threads']) # threads: 100
-        self._targets=self._config['count']
+        self._targets=self._config['targets']
         self.ips_q = Queue.Queue()
         self.out_q = Queue.Queue()
         try:
