@@ -7,8 +7,8 @@
         type: "ping.pinger"  
     criteria:                              # optional
         trigger.total: 
-          type: "equals" 
-          pattern: true        
+          type: "greaterthan" 
+          pattern: 1        
     action:
         ref: "pan.influx_write"
         parameters:
