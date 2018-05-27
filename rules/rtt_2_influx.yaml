@@ -8,7 +8,7 @@
     criteria:                              # optional
         trigger.total: 
           type: "greaterthan" 
-          pattern: 1        
+          pattern: 0        
     action:
         ref: "pan.influx_write"
         parameters:
