@@ -34,7 +34,7 @@ class Pinger(PollingSensor):
         self.ips = []
         try:
             with open(self._targets, 'r') as f:
-                self.ips = f.readlines()
+                self.ips = f.readlines().replace("\n","")
         except IOError: 
             self._logger.debug('########## Can not read file with targets: {}'.format(self._targets))
        
