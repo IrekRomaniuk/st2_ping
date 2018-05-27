@@ -8,5 +8,5 @@
   username: "influxdb"    
   password: "password"  
   db: "influxdb"
-  quantile: 0.75
+  quantile: "0.75"
     
