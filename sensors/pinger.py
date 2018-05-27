@@ -85,7 +85,7 @@ class Pinger(PollingSensor):
             # get an IP item form queue
             ip = q.get()
             # ping it
-            args=['/bin/ping', '-c', '1', '-W', '1', str(ip)]
+            args=['/bin/ping', '-c', self._count, '-W', self._timeout, str(ip)]
             p_ping = subprocess.Popen(args,
                                     shell=False,
                                     stdout=subprocess.PIPE)
