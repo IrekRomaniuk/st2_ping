@@ -50,7 +50,7 @@ class Pinger(PollingSensor):
             payload['msg']=[]            
             self._logger.debug('########## First: {} Last: {} Number: {}'.format(self.ips[0],self.ips[len(self.ips)-1], len(self.ips)))
         else:
-            payload['Error'] = "Can not read file with targets"
+            payload['Error'] = 'Can not read file with targets: {}'.format(self._targets)
             self.sensor_service.dispatch(trigger="ping.pinger", payload=payload)
             return
         # start the thread pool
