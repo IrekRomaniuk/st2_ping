@@ -24,8 +24,8 @@ class Pinger(PollingSensor):
         self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)        
         
     def setup(self):               
-        self._timeout=self._config['timeout']
-        self._count=self._config['count'] 
+        self._timeout=str(self._config['timeout'])
+        self._count=str(self._config['count'])
         self._threads=int(self._config['threads']) # threads: 100
         self._targets=self._config['targets']
         self.ips_q = Queue.Queue()
