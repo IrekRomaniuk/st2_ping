@@ -7,6 +7,7 @@ import os
 
 class Pinger(PollingSensor):
     """
+    based on fork from sourceperl/th_pinger.py https://gist.github.com/irom77/794c18ba392e42e944b09c42493b1786
     * self.sensor_service
         - provides utilities like
             get_logger() for writing to logs.
