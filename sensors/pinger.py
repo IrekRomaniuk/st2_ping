@@ -62,7 +62,7 @@ class Pinger(PollingSensor):
 
         # fill queue
         for ip in self.ips:
-            self.ips_q.put(ip.replace("\n",""))
+            self.ips_q.put(ip.replace("\n","")) #.strip()
 
         # wait until worker threads are done to exit
         self.ips_q.join()
