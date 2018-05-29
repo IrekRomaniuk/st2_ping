@@ -17,7 +17,7 @@
 
 ## Actions
 
-* `influx_write`:
+* `influx_write`: Writing average ping delay to Influxdb
 
 ## Sensor:
 
