@@ -18,6 +18,7 @@
 ## Actions
 
 * `influx_write`: Writing average ping delay to Influxdb
+* `portal_report`: Reporting average delay per target at https://st2/ping.txt where ping.txt is specified in the config *output*
 
 ## Sensor:
 
