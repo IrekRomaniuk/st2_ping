@@ -21,6 +21,6 @@
 
 ## Sensor:
 
-* `Pinger`: emitting *ping* trigger 
+* `Pinger`: emitting *pinger* trigger 
 
 
