@@ -1,4 +1,4 @@
-## st2 ping pack
+## Ping pack
 
 *Ping* pack collecting ping responses from multiple targets (IP addresses) using threads. Includes sensor based on [fork from sourceperl/th_pinger.py](https://gist.github.com/irom77/794c18ba392e42e944b09c42493b1786)
 
