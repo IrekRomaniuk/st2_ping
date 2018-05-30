@@ -57,7 +57,7 @@ class Pinger(PollingSensor):
         # start the thread pool
         for i in range(num_threads):
             worker = Thread(target=self.thread_pinger, args=(i, self.ips_q))
-            worker.setDaemon(True)
+            #worker.setDaemon(True)
             worker.start()
 
         # fill queue
