@@ -2,7 +2,7 @@
     name: "rtt_2_influx"
     pack: "ping"
     description: "Write avg att to Influxdb"
-    enabled: false
+    enabled: true
     trigger:
         type: "ping.pinger"  
     criteria:                              # optional
