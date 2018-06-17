@@ -2,7 +2,7 @@
 name: "influx_write"
 runner_type: "python-script"
 description: "Write point to InfluxDB"
-enabled: true
+enabled: false
 entry_point: "influx_write.py"
 parameters:    
     ips:
